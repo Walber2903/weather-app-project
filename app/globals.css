@@ -4,7 +4,8 @@
 
 :root {
   --background: linear-gradient(to bottom, #383838, #9E9E9E);
-
+  height: 100vh;
+  min-width: 1512px;
 }
 
 @media (prefers-color-scheme: dark) {
