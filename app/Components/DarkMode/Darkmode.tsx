@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from 'react';
-import './Darkmode.css';
 
 const DarkModeToggle: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -12,14 +11,32 @@ const DarkModeToggle: React.FC = () => {
   };
 
   return (
-    <div style={{ position: 'absolute', top: '20px', left: '20px' }}>
-      <label className="switch">
-        <input type="checkbox" checked={isDarkMode} onChange={toggleDarkMode} />
-        <span className="slider round"></span>
+    <div className='w-[109] h-[61]'>
+      <label className="relative inline-block w-[100px] h-[38px]">
+        <input 
+          type="checkbox" 
+          className="opacity-0 w-0 h-0" 
+          checked={isDarkMode} 
+          onChange={toggleDarkMode} 
+        />
+        <span 
+          className={`absolute cursor-pointer top-0 left-0 right-0 bottom-0 
+            bg-gray-300 rounded-[34px] transition duration-400
+            ${isDarkMode ? 'bg-blue-500' : ''}
+          `}
+        >
+        </span>
+        <span 
+          className={`absolute content-[''] h-[33px] w-[33px] left-[8px] bottom-[3px] 
+            bg-black rounded-full transition-transform duration-400
+            ${isDarkMode ? 'transform translate-x-[48px]' : ''}
+          `}
+        >
+        </span>
       </label>
       {/* Text showing the current state */}
       <div style={{ marginTop: '10px', textAlign: 'center', color: isDarkMode ? '#fff' : '#000' }}>
-        {isDarkMode ? 'DARK MODE ENABLED' : 'DARK MODE DISABLED'}
+        {isDarkMode ? 'Dark Mode' : 'White Mode'}
       </div>
     </div>
   );

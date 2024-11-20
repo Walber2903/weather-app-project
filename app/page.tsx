@@ -1,33 +1,23 @@
-<!-- import React from 'react';
-import DarkModeToggle from './Components/DarkMode/Darkmode'; -->
+import React from 'react';
+import DarkModeToggle from './Components/DarkMode/Darkmode';
 import Image from "next/image";
 import WeatherNavWidget from "./Components/WeatherNavWidget";
 import Sunny from './Assets/sunny.png';
 import Navigation from './Assets/navigation-north.png';
 import CardInfo from "./Components/CardInfo";
+import Header from './Components/Header/Header';
 
 const Page: React.FC = () => {
   return (
-    <div>
-<!--       <DarkModeToggle />
-      <div style={{ textAlign: 'center', paddingTop: '100px' }}>
-        <h1>Modo Oscuro</h1>
-        <p>
-          Cambia entre el modo claro y el modo oscuro para probar el fondo negro puro.
-        </p>
-        {/* Bloque para confirmar el fondo */}
-        <div
-          style={{
-            backgroundColor: '#000',
-            width: '200px',
-            height: '200px',
-            margin: '20px auto',
-            border: '1px solid #fff',
-          }}
-        ></div>
-      </div> -->
+    <div className='flex justify-center h-screen m-auto'>
+      <Header />
+
+      <div >
+
+
+      </div>
       
-    <CardInfo />
+    {/* <CardInfo />
 
     <div className="flex flew-row gap-2">
     
@@ -66,7 +56,7 @@ const Page: React.FC = () => {
       temperature="26"
       speed="3"
     />
-    </div>
+    </div> */}
     </div>
   );
 };
