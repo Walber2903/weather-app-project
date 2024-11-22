@@ -6,15 +6,18 @@ import Sunny from './Assets/sunny.png';
 import Navigation from './Assets/navigation-north.png';
 import CardInfo from "./Components/CardInfo";
 import Header from './Components/Header/Header';
+import LocationCard from './Components/CardInfo/FirstCard/LocationCard';
+import HourlyInfo from './Components/HourlyInfo';
 
 const Page: React.FC = () => {
   return (
     <div className='flex justify-center h-screen m-auto'>
       <Header />
 
-      <div >
-
-
+      <div className='w-[1345px] h-[760px] mt-[60px] ml-[80px] mr-[80px] gap-10'>
+        <LocationCard />
+        
+        <HourlyInfo />
       </div>
       
     {/* <CardInfo />
