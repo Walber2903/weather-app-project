@@ -1,54 +1,30 @@
-import Image from "next/image";
-import WeatherNavWidget from "./Components/WeatherNavWidget";
-import Sunny from './Assets/sunny.png';
-import Navigation from './Assets/navigation-north.png';
+import React from 'react';
 import CardInfo from "./Components/CardInfo";
+import Header from './Components/Header/Header';
+import LocationCard from './Components/FirstCard/LocationCard';
+import HourlyInfo from './Components/HourlyInfo';
+import DaysForecast from './Components/DaysForecast';
+import { WeatherProvider } from './context/WeatherContext';
 
-export default function Home() {
+const Page: React.FC = () => {
   return (
-    <div>
-    <CardInfo />
+    <WeatherProvider>
+      <div className='flex flex-col justify-center h-screen mx-auto'>
+        <Header />
 
-    <div className="flex flew-row gap-2">
-
-
-    
-    <WeatherNavWidget 
-      time="12:00"
-      weatherIcon={Sunny}
-      navigationIcon={Navigation}
-      temperature="26"
-      speed="3"
-    />
-    <WeatherNavWidget 
-      time="12:00"
-      weatherIcon={Sunny}
-      navigationIcon={Navigation}
-      temperature="26"
-      speed="3"
-    />
-    <WeatherNavWidget 
-      time="12:00"
-      weatherIcon={Sunny}
-      navigationIcon={Navigation}
-      temperature="26"
-      speed="3"
-    />
-    <WeatherNavWidget 
-      time="12:00"
-      weatherIcon={Sunny}
-      navigationIcon={Navigation}
-      temperature="26"
-      speed="3"
-    />
-        <WeatherNavWidget 
-      time="12:00"
-      weatherIcon={Sunny}
-      navigationIcon={Navigation}
-      temperature="26"
-      speed="3"
-    />
-    </div>
-    </div>
+        <div className='w-[1345px] h-[860px] mt-[60px] mx-auto gap-10 flex flex-col'>
+          <div className='flex flex-row gap-5'>
+            <LocationCard />
+            <CardInfo />
+          </div>
+          <div className='flex flex-row gap-5'>
+            <DaysForecast />
+            <HourlyInfo />
+          </div>
+        </div>
+      </div>
+    </WeatherProvider>
   );
-}
+};
+
+export default Page;

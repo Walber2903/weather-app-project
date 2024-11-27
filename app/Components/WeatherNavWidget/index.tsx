@@ -4,8 +4,8 @@ import { StaticImageData } from 'next/image';
 
 interface WeatherNavWidgetProps {
   time: string;
-  weatherIcon: StaticImageData;
-  navigationIcon: StaticImageData;
+  weatherIcon: StaticImageData | string;
+  navigationIcon: StaticImageData | string;
   temperature: string | number;
   speed: string | number;
 }
@@ -18,7 +18,7 @@ const WeatherNavWidget: React.FC<WeatherNavWidgetProps> = ({
   speed 
 }) => {
   return (
-    <div className="flex flex-col items-center justify-between w-32 h-[270px] bg-gray-800 rounded-[40px] py-8">
+    <div className="flex flex-col items-center justify-between w-32 h-[270px] bg-gradient-to-b from-gray-400 to-gray-700 rounded-[40px] py-8">
       {/* Time */}
       <div className="font-bold text-2xl text-white">
         {time}
