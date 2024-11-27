@@ -90,46 +90,45 @@ export const WeatherProvider: React.FC<WeatherProviderProps> = ({
       const relativeOffsetSeconds =
         localOffsetSeconds - VANCOVER_OFFSET_SECONDS;
 
-      const processedData: WeatherData = {
-        cityName: currentWeather.name,
-        country: currentWeather.sys.country,
-        timezone: currentWeather.timezone,
-        temperature: currentWeather.main.temp,
-        feelsLike: currentWeather.main.feels_like,
-        humidity: currentWeather.main.humidity,
-        pressure: currentWeather.main.pressure,
-        windSpeed: currentWeather.wind.speed,
-        icon: `https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`,
-        description: currentWeather.weather[0].description,
-        currentDateTime: new Date(
-          (currentWeather.dt + relativeOffsetSeconds) * 1000
-        ),
-        sunrise: new Date(
-          (currentWeather.sys.sunrise + relativeOffsetSeconds) * 1000
-        ),
-        sunset: new Date(
-          (currentWeather.sys.sunset + relativeOffsetSeconds) * 1000
-        ),
-        uvIndex,
-        forecastDaily: forecast.list
-          .filter((_item: any, index: number) => index % 8 === 0)
-          .map((item: any) => ({
-            date: new Date(
+        const processedData: WeatherData = {
+          cityName: currentWeather.name,
+          country: currentWeather.sys.country,
+          timezone: currentWeather.timezone,
+          temperature: currentWeather.main.temp,
+          feelsLike: currentWeather.main.feels_like,
+          humidity: currentWeather.main.humidity,
+          pressure: currentWeather.main.pressure,
+          windSpeed: parseFloat((currentWeather.wind.speed * 3.6).toFixed(1)), 
+          icon: `https://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`,
+          description: currentWeather.weather[0].description,
+          currentDateTime: new Date(
+            (currentWeather.dt + relativeOffsetSeconds) * 1000
+          ),
+          sunrise: new Date(
+            (currentWeather.sys.sunrise + relativeOffsetSeconds) * 1000
+          ),
+          sunset: new Date(
+            (currentWeather.sys.sunset + relativeOffsetSeconds) * 1000
+          ),
+          uvIndex,
+          forecastDaily: forecast.list
+            .filter((_item: any, index: number) => index % 8 === 0)
+            .map((item: any) => ({
+              date: new Date((item.dt + relativeOffsetSeconds) * 1000),
+              temperature: item.main.temp,
+              icon: `https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`,
+              description: item.weather[0].description,
+            })),
+          forecastHourly: forecast.list.slice(0, 5).map((item: any) => ({
+            time: new Date(
               (item.dt + relativeOffsetSeconds) * 1000
-            ),
+            ).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" }),
             temperature: item.main.temp,
             icon: `https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`,
-            description: item.weather[0].description,
+            windDirection: parseFloat((item.wind.speed * 3.6).toFixed(1)), 
           })),
-        forecastHourly: forecast.list.slice(0, 5).map((item: any) => ({
-          time: new Date(
-            (item.dt + relativeOffsetSeconds) * 1000
-          ).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" }),
-          temperature: item.main.temp,
-          icon: `https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`,
-          windDirection: item.wind.deg,
-        })),
-      };
+        };
+        
 
       setWeatherData(processedData);
     } catch (err: any) {
