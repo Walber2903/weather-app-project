@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import DarkModeToggle from '../DarkMode/Darkmode';
 import InputSearch from '../InputSearch/InputSearch';
@@ -11,7 +12,7 @@ const Header = () => {
   const userName = 'Emmanuel';
 
   return (
-    <div className="w-full max-w-[1200px] h-[185px] pt-[73px] pl-[78px] pr-[77px] pb-[60px] flex items-center">
+    <div className="w-full max-w-[1345px] h-[185px] pt-[73px] mx-auto pb-[60px] flex items-center">
       <DarkModeToggle />
       <InputSearch />
       <div>
