@@ -4,7 +4,7 @@
 
 /* Define custom CSS variables for light mode */
 :root {
-  --background: linear-gradient(to bottom, #f0f0f0, #ffffff); /* Light mode background */
+  --background: #d1bebc; /* Light mode background */
   --foreground: #000000; /* Light mode text color */
   --link-color: #1a73e8; /* Light mode link color */
   --form-background: #ffffff; /* Light mode form background */
