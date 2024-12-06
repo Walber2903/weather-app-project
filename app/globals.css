@@ -2,20 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Define custom CSS variables for light mode */
 :root {
-  --background: linear-gradient(to bottom, #383838, #9E9E9E);
-  height: 100vh;
-  min-width: 1512px;
+  --background: linear-gradient(to bottom, #f0f0f0, #ffffff); /* Light mode background */
+  --foreground: #000000; /* Light mode text color */
+  --link-color: #1a73e8; /* Light mode link color */
+  --form-background: #ffffff; /* Light mode form background */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: linear-gradient(to bottom, #383838, #9E9E9E);
-  }
-}
-
+/* Base body styling for light mode */
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease; /* Smooth transition between modes */
+}
+
+/* Base link styling for light mode */
+a {
+  color: var(--link-color);
+  transition: color 0.3s ease;
+}
+
+/* Dark mode styles applied via dark-mode class on the body */
+body.dark-mode {
+  --background: #121212; /* Dark mode background */
+  --foreground: #ffffff; /* Dark mode text color */
+  --link-color: #90caf9; /* Dark mode link color */
+  --form-background: #333333; /* Dark mode form background */
+
+  color: var(--foreground);
+  background: var(--background);
+}
+
+/* Ensure all other text and links respect dark mode */
+body.dark-mode a {
+  color: var(--link-color);
+}
+
+/* Form background color for consistency */
+.form-container {
+  background-color: var(--form-background);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure headings, paragraphs, and other elements also use foreground color */
+h1, h2, h3, h4, h5, h6, p, span, li {
+  color: var(--foreground); /* Ensure all text elements follow the correct foreground color */
+}
+
+button {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode styles for buttons if needed */
+body.dark-mode button {
+  color: var(--foreground);
+  background-color: #333333; /* Dark button background in dark mode */
 }

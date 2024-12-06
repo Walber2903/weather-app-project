@@ -48,7 +48,7 @@ const LoginForm: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center p-8 bg-white rounded-lg shadow-md w-[400px] mx-auto mt-20">
+    <div className="form-container w-[400px] mx-auto mt-20"> {/* Added class to ensure visibility */}
       <h2 className="text-2xl font-bold mb-4">Sign In</h2>
 
       {error && <div className="text-red-500 mb-4">{error}</div>}

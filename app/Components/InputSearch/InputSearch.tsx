@@ -14,7 +14,7 @@ const InputSearch: React.FC = () => {
     if (e.key === 'Enter') {
       const [city, country] = searchValue.split(',').map((str) => str.trim());
       if (!city || !country) {
-        setLocalError('Por favor, insira no formato: cidade,país');
+        setLocalError('Please enter using City , Country');
         return;
       }
       setLocalError(null); // Limpa erros ao tentar buscar
